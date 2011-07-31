@@ -1,0 +1,1 @@
+var bt_latest_news_xml_url = "http://test.ukrview.net/test.php";

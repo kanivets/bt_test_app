@@ -1,14 +1,14 @@
-var bt_latest_news_xml_url = "http://test.ukrview.net/test.php";
-
-
-function webapp_start() {
-  setTimeout(function() { window.scrollTo(0, 1) }, 100);
-	//get bt latest news xml
-	$.ajax({
-    type: "GET",
-  	url: bt_latest_news_xml_url,
-  	dataType: "xml",
-  	success: function(xml) {
+var WebApp = {
+  start: function() {
+      
+    setTimeout(function() { window.scrollTo(0, 1) }, 100);
+    
+    //get bt latest news xml
+    $.ajax({
+      type: "GET",
+      url: bt_latest_news_xml_url,
+      dataType: "xml",
+      success: function(xml) {
         //building news list
         $(xml).find('item').each(function(){
           var article = {};
@@ -17,7 +17,6 @@ function webapp_start() {
           article.img = $(this).find('enclosure').attr('url');
           article.id = parseInt($(this).find('guid').text());
           if (article.img) {
-            console.log(article);
             var last_article_block = "<li>";
             last_article_block += "<article>";
             last_article_block += "<a href='#article_" + article.id + "' rel='" + article.id + "'>";
@@ -27,11 +26,33 @@ function webapp_start() {
             last_article_block += "</a>";
             last_article_block += "</article>";
             last_article_block += "</li>";
-            $('#main section ul').prepend(last_article_block);
+            $('#main section ul').append(last_article_block);
           }
         });
         //end building news list
         $(".loader").hide();
+        
+        $("nav a").click(function() {
+          if ($(this).attr('class') == 'back') {
+            $("#article").hide();
+            $("#main").show().addClass("enter-left");
+            return false;
+          }
+          else if ($(this).attr('class') == 'prev')
+          {
+            //will be
+          }
+          else if ($(this).attr('class') == 'next')
+          {
+            //will be
+          }
+          else
+          {
+            $("nav a").removeClass('current');
+            $(this).addClass('current');
+          }
+        });
+
         $('#main section ul').show();
         
         $("#main article a").click(function() {
@@ -66,29 +87,9 @@ function webapp_start() {
   	}
   });
   //end get bt latest news xml
-
 	$("#article").hide();
-	$("nav a").click(function() {
-	  if ($(this).attr('class') == 'back') {
-      $("#article").hide();
-      $("#main").show().addClass("enter-left");
-  	  return false;
-	  }
-	  else if ($(this).attr('class') == 'prev')
-	  {
-      //will be
-	  }
-	  else if ($(this).attr('class') == 'next')
-	  {
-      //will be
-	  }
-	  else
-	  {
-	     $("nav a").removeClass('current');
-	     $(this).addClass('current');
-	  }
-	});
 
-};
+  }
+}
 
-window.onload = webapp_start;
+window.onload = WebApp.start();
