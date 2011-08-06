@@ -14,7 +14,6 @@ a { color:#FF6600; }
 #wrap {
   background: #151515;
 	position: relative;
-	width: 320px;
   min-height: 430px;
 	margin: 0 auto;
 }
@@ -223,29 +222,29 @@ nav ul li a.current {
 
 /* SWIPING ANIMATION */
 
-.enter-left 
+.enter-left
 {
 	-webkit-animation-name: enter-left;
-	-webkit-animation-duration: 0.25s;												
-	-webkit-animation-timing-function: linear;				
+	-webkit-animation-duration: 0.25s;
+	-webkit-animation-timing-function: linear;
 }
-			
-@-webkit-keyframes enter-left 
+
+@-webkit-keyframes enter-left
 {
-	from {					
-		-webkit-transform: translate(-320px,0);					
+	from {
+		-webkit-transform: translate(-320px,0);
 	}
 	to {
 		-webkit-transform: translate(0,0);
 	}
 }
-			
+
 .enter-right {
 	-webkit-animation-name: enter-right;
-	-webkit-animation-duration: 0.25s;							
-	-webkit-animation-timing-function: linear;								
+	-webkit-animation-duration: 0.25s;
+	-webkit-animation-timing-function: linear;
 }
-			
+
 @-webkit-keyframes enter-right {
 	from {
 		-webkit-transform: translate(320px,0);
@@ -259,27 +258,27 @@ nav ul li a.current {
 
 .exit-left {
 	-webkit-animation-name: exit-left;
-	-webkit-animation-duration: 0.25s;							
-	-webkit-animation-timing-function: linear;				
+	-webkit-animation-duration: 0.25s;
+	-webkit-animation-timing-function: linear;
 }
-			
+
 @-webkit-keyframes exit-left {
-	from {					
+	from {
 		-webkit-transform: translate(0,0);
 	}
-	to {					
+	to {
 		-webkit-transform: translate(-320px,0);
 	}
 }
-			
+
 .exit-right {
 	-webkit-animation-name: exit-right;
-	-webkit-animation-duration: 0.25s;							
-	-webkit-animation-timing-function: linear;				
+	-webkit-animation-duration: 0.25s;
+	-webkit-animation-timing-function: linear;
 }
-			
+
 @-webkit-keyframes exit-right {
-	from {					
+	from {
 		-webkit-transform: translate(0,0);
 	}
 	to {
