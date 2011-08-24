@@ -1,6 +1,6 @@
 var WebApp = {
   start: function() {
-      
+    deviceHeight = 480;
     setTimeout(function() { window.scrollTo(0, 1) }, 100);
     
     //get bt latest news xml
@@ -19,7 +19,7 @@ var WebApp = {
           if (article.img) {
             var last_article_block = "<li>";
             last_article_block += "<article>";
-            last_article_block += "<a href='#article_" + article.id + "' rel='" + article.id + "'>";
+            last_article_block += "<a href='#article_" + article.id + "' rel='" + article.id + "' ontouchstart='$(this).addClass(\"active\");' ontouchend='$(this).removeClass(\"active\");'>";
             last_article_block += "<img src='" + article.img + "' alt=''/>";
             last_article_block += article.title;
             last_article_block += "<span>" + article.date + "</span>";
@@ -31,7 +31,7 @@ var WebApp = {
         });
         //end building news list
         $(".loader").hide();
-        
+
         $("nav a").click(function() {
           if ($(this).attr('class') == 'back') {
             $("#article").hide();
@@ -78,6 +78,7 @@ var WebApp = {
                   $("#main").hide();
                   setTimeout(function() { window.scrollTo(0, 1) }, 100);
                   $("#article").show().addClass("enter-right");
+                  $('nav').show().css('top', deviceHeight - 74);
           	}});
           //end get article
 
@@ -89,6 +90,30 @@ var WebApp = {
   //end get bt latest news xml
 	$("#article").hide();
 
+  },
+  hideMenu: function() {
+    $('nav').hide();
+  },
+  showMenu: function() {
+    function testScrollStop() {
+      currentScrollPos = $('body').scrollTop();
+      setTimeout(testNextScrollPos, 700);      
+    }
+    
+    function testNextScrollPos() {
+      nextScrollPos = $('body').scrollTop();
+      if (nextScrollPos == currentScrollPos) {
+        //alert('ok ' + nextScrollPos + ' = ' + currentScrollPos);
+        $('nav').css('top', nextScrollPos + deviceHeight - 75);
+        $('nav').fadeIn('slow');
+      }
+      else {
+        //alert('bad ' + nextScrollPos + ' = ' + currentScrollPos);
+        WebApp.showMenu();
+      }
+    }
+
+    testScrollStop();
   }
 }
 

@@ -5,7 +5,7 @@
   <title>BT - Latest news</title>
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;user-scalability:no;" />
+  <meta name="viewport" content="width=100%; initial-scale=1; maximum-scale=1; user-scalable=0;" />
   <link rel="stylesheet" href="css/bt_webapp.css">
   <script src="js/jquery-1.6.1.min.js"></script>
   <script src="js/config.js"></script>
@@ -37,7 +37,7 @@
         </ul>
       </nav>-->
     </div>
-    <div id="article">
+    <div id="article" onTouchMove='WebApp.hideMenu();WebApp.showMenu();'>
       <section>
         <header>
         26.7.2011 15:54
@@ -52,7 +52,7 @@
       </section>
       <nav>
         <ul>
-          <li><a href="#" class="back">Back</a></li>
+          <li><a href="#" class="back" ontouchstart='$(this).addClass("active");' ontouchend='$(this).removeClass("active");'>Back</a></li>
         </ul>
       </nav>
     </div>
