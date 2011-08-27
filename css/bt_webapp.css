@@ -18,11 +18,13 @@ img { max-width: 100%; }
 .sep{ padding:0px;}
 a { color:#FF6600; }
 
-#wrap {
+#wrapper {
   background: #151515;
 	position: relative;
-  min-height: 430px;
-	margin: 0 auto;
+  z-index:1;
+  width: 100%;
+  height: 430px;
+  overflow: hidden;
 }
 
 .loader {
@@ -34,10 +36,7 @@ a { color:#FF6600; }
 }
 
 header {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
+  width: 100%;
   height: 30px;
   background: url('../img/bt_logo.png') no-repeat top left, -webkit-gradient(
    linear,
@@ -62,8 +61,6 @@ nav {
    color-stop(0.5, #2B2B2B),
    color-stop(1, #131F1F)
   );
-  position: absolute;
-  top: 1px;
   height: 50px;
   width: 100%;
 }

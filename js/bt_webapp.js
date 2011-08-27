@@ -3,6 +3,10 @@ var WebApp = {
     deviceHeight = 480;
     setTimeout(function() { window.scrollTo(0, 1) }, 100);
     
+    //document.addEventListener('touchmove', function(e){ e.preventDefault(); });
+    //myScroll = new iScroll('scroller');
+    //loaded();
+    
     //get bt latest news xml
     $.ajax({
       type: "GET",
@@ -118,3 +122,21 @@ var WebApp = {
 }
 
 window.onload = WebApp.start();
+
+
+function setHeight() {
+	var headerH = document.getElementById('header').offsetHeight,
+		footerH = document.getElementById('footer').offsetHeight,
+		wrapperH = window.innerHeight - headerH - footerH;
+	document.getElementById('wrapper').style.height = wrapperH + 'px';
+}
+
+function loaded() {
+  setHeight();
+	document.addEventListener('touchmove', function(e){ e.preventDefault(); });
+	myScroll = new iScroll('scroller', {desktopCompatibility:true});
+}
+
+// Check screen size on orientation change
+window.addEventListener('onorientationchange' in window ? 'orientationchange' : 'resize', setHeight, false);
+document.addEventListener('DOMContentLoaded', loaded);
