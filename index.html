@@ -41,7 +41,7 @@
         </ul>
       </nav>-->
     </div>
-    <div id="article" onTouchMove='WebApp.hideMenu();WebApp.showMenu();'>
+    <div id="article">
       <section>
         <header>
         26.7.2011 15:54
@@ -60,8 +60,8 @@
 
   <nav id="footer">
     <ul>
-      <li><a href="#" class="back" ontouchstart='$(this).addClass("active");' ontouchend='$(this).removeClass("active");'>Back</a></li>
-    </ul>
+      <li><a href="#" class="back" onclick='$(this).hide();return false;' ontouchstart='$(this).addClass("active");' ontouchend='$(this).removeClass("active");'>Back</a></li>
+    </ul> 
   </nav>
 
 </body>

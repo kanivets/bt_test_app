@@ -3,10 +3,6 @@ var WebApp = {
     deviceHeight = 480;
     setTimeout(function() { window.scrollTo(0, 1) }, 100);
     
-    //document.addEventListener('touchmove', function(e){ e.preventDefault(); });
-    //myScroll = new iScroll('scroller');
-    //loaded();
-    
     //get bt latest news xml
     $.ajax({
       type: "GET",
@@ -62,6 +58,7 @@ var WebApp = {
         $("#main article a").click(function() {
           //get article
           var id = $(this).attr('rel');
+          $('#footer .back').show();
           var bt_article_xml_url = 'http://test.ukrview.net/test_node.php?id=' + id;
           $.ajax({
             type: "GET",
@@ -94,30 +91,6 @@ var WebApp = {
   //end get bt latest news xml
 	$("#article").hide();
 
-  },
-  hideMenu: function() {
-    $('nav').hide();
-  },
-  showMenu: function() {
-    function testScrollStop() {
-      currentScrollPos = $('body').scrollTop();
-      setTimeout(testNextScrollPos, 700);      
-    }
-    
-    function testNextScrollPos() {
-      nextScrollPos = $('body').scrollTop();
-      if (nextScrollPos == currentScrollPos) {
-        //alert('ok ' + nextScrollPos + ' = ' + currentScrollPos);
-        $('nav').css('top', nextScrollPos + deviceHeight - 75);
-        $('nav').fadeIn('slow');
-      }
-      else {
-        //alert('bad ' + nextScrollPos + ' = ' + currentScrollPos);
-        WebApp.showMenu();
-      }
-    }
-
-    testScrollStop();
   }
 }
 
