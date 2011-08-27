@@ -75,7 +75,7 @@ var WebApp = {
                   $("#article h1").html(article.title);
                   $("#article img").attr('src', article.img);
                   $("#article .text").html(article.content);
-                  $("#article header").html(article.date);
+                  //$("#article header").html(article.date);
                   $("#main").hide();
                   setTimeout(function() { window.scrollTo(0, 1) }, 100);
                   $("#article").show().addClass("enter-right");
