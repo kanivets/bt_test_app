@@ -106,8 +106,14 @@ function setHeight() {
 
 function loaded() {
   setHeight();
-	document.addEventListener('touchmove', function(e){ e.preventDefault(); });
-	myScroll = new iScroll('scroller', {desktopCompatibility:true});
+  var ua = navigator.userAgent.toLowerCase();
+  var isAndroid = ua.indexOf("android") > -1;
+  if(isAndroid) {
+    alert('this is android');
+  } else {
+    document.addEventListener('touchmove', function(e){ e.preventDefault(); });
+    myScroll = new iScroll('scroller', {desktopCompatibility:true});
+  }
 }
 
 // Check screen size on orientation change
