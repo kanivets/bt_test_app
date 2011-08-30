@@ -191,6 +191,22 @@ nav ul li a.current {
   margin-bottom: 5px;
 }
 
+.android #header {
+  position: fixed;
+  top: 0px;
+  z-index: 2;
+}
+
+.android #wrapper {
+  margin-top: 30px;
+}
+
+.android #footer {
+  position: fixed;
+  bottom: 0px;
+  z-index: 2;
+}
+
 #footer .back {
   display: none;
 }

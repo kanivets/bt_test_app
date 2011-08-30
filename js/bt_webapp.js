@@ -105,17 +105,19 @@ function setHeight() {
 }
 
 function loaded() {
-  setHeight();
+  
   var ua = navigator.userAgent.toLowerCase();
   var isAndroid = ua.indexOf("android") > -1;
   if(isAndroid) {
-    alert('this is android');
+  //  alert('this is android');
+    $('body').addClass('android');
   } else {
+    setHeight();
     document.addEventListener('touchmove', function(e){ e.preventDefault(); });
     myScroll = new iScroll('scroller', {desktopCompatibility:true});
   }
 }
 
 // Check screen size on orientation change
-window.addEventListener('onorientationchange' in window ? 'orientationchange' : 'resize', setHeight, false);
+//window.addEventListener('onorientationchange' in window ? 'orientationchange' : 'resize', setHeight, false);
 document.addEventListener('DOMContentLoaded', loaded);
