@@ -1,6 +1,30 @@
 var WebApp = {
+
+  contentStorage: {},
+  
+  storeArticle: function(id) {
+    var content = '';
+    var bt_article_xml_url = 'http://test.ukrview.net/test_node.php?id=' + id;
+    $.ajax({
+      type: "GET",
+    	url: bt_article_xml_url,
+      dataType: "xml",
+      success: function(xml) {
+        var article = {};
+        article.date = $(xml).find('pubDate');
+        article.date = $(article.date[0]).text();
+        article.content = $(xml).find('content').text();
+        article.img = $(xml).find('enclosure').attr('url');
+        article.title = $(xml).find('item').find('title');
+        article.title = $(article.title[0]).text();
+        content += '<h1>'+ article.title +'</h1>';
+        content += '<img src="'+ article.img +'" alt="" >';
+        content += '<div class="text">'+ article.content +'</div>';
+      }});
+    this.contentStorage[id] = content;
+  },
+  
   start: function() {
-    deviceHeight = 480;
     setTimeout(function() { window.scrollTo(0, 1) }, 100);
     
     //get bt latest news xml
@@ -27,6 +51,7 @@ var WebApp = {
             last_article_block += "</article>";
             last_article_block += "</li>";
             $('#main section ul').append(last_article_block);
+            WebApp.storeArticle(article.id);
           }
         });
         //end building news list
@@ -44,6 +69,7 @@ var WebApp = {
         $('#main section ul').show();
         
         $("#main article a").click(function() {
+          
           //get article
           var id = $(this).attr('rel');
           
@@ -116,7 +142,6 @@ function loaded() {
     
     $('body').addClass('iphone');
     $.getScript('js/iscroll.js', function(){
-      alert('iscroll');
       document.addEventListener('touchmove', function(e){ e.preventDefault(); });
       myScroll = new iScroll('scroller', {desktopCompatibility:true});
     });
