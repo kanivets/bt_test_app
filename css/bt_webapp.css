@@ -115,6 +115,10 @@ nav ul li a.current {
   top: 0;
 }
 
+#article .text {
+  color: #fff;
+}
+
 #main section {
   padding: 40px 10px;
 }

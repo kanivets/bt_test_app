@@ -3,7 +3,7 @@ var WebApp = {
   contentStorage: {},
   
   storeArticle: function(id) {
-    var content = '';
+    var articleHTML = '';
     var bt_article_xml_url = 'http://test.ukrview.net/test_node.php?id=' + id;
     $.ajax({
       type: "GET",
@@ -17,11 +17,11 @@ var WebApp = {
         article.img = $(xml).find('enclosure').attr('url');
         article.title = $(xml).find('item').find('title');
         article.title = $(article.title[0]).text();
-        content = '<h1>'+ article.title +'</h1>';
-        content += '<img src="'+ article.img +'" alt="" >';
-        content += '<div class="text">'+ article.content +'</div>';
+        articleHTML = '<h1>'+ article.title +'</h1>';
+        articleHTML += '<img src="'+ article.img +'" alt="" >';
+        articleHTML += '<div class="text">'+ article.content +'</div>';
+        WebApp.contentStorage[id] = articleHTML;
       }});
-    this.contentStorage[id] = content;
   },
   
   start: function() {
@@ -73,29 +73,43 @@ var WebApp = {
           //get article
           var id = $(this).attr('rel');
           
+          // =========================
+          // load stored article
+          // =========================
+          $('#article').html(WebApp.contentStorage[id]);
+          $("#main").hide();
+          setTimeout(function() { window.scrollTo(0, 1) }, 100);
+          $("#article").show().addClass("enter-right");
+          $('#scroller').css('-webkit-transform','translate3d(0px, 0px, 0px)');
+          
           $('#footer').show();
-          var bt_article_xml_url = 'http://test.ukrview.net/test_node.php?id=' + id;
-          $.ajax({
-            type: "GET",
-          	url: bt_article_xml_url,
-          	dataType: "xml",
-          	success: function(xml) {
-                  var article = {};
-                  article.date = $(xml).find('pubDate');
-                  article.date = $(article.date[0]).text();
-                  article.content = $(xml).find('content').text();
-                  article.img = $(xml).find('enclosure').attr('url');
-                  article.title = $(xml).find('item').find('title');
-                  article.title = $(article.title[0]).text();
-                  $("#article h1").html(article.title);
-                  $("#article img").attr('src', article.img);
-                  $("#article .text").html(article.content);
-                  //$("#article header").html(article.date);
-                  $("#main").hide();
-                  setTimeout(function() { window.scrollTo(0, 1) }, 100);
-                  $("#article").show().addClass("enter-right");
-                  $('#scroller').css('-webkit-transform','translate3d(0px, 0px, 0px)');
-            }});
+          
+          
+          // =========================
+          // load article from url
+          // =========================
+          //var bt_article_xml_url = 'http://test.ukrview.net/test_node.php?id=' + id;
+          //$.ajax({
+          //  type: "GET",
+          //	url: bt_article_xml_url,
+          //	dataType: "xml",
+          //	success: function(xml) {
+          //       var article = {};
+          //        article.date = $(xml).find('pubDate');
+          //        article.date = $(article.date[0]).text();
+          //        article.content = $(xml).find('content').text();
+          //        article.img = $(xml).find('enclosure').attr('url');
+          //        article.title = $(xml).find('item').find('title');
+          //        article.title = $(article.title[0]).text();
+          //        $("#article h1").html(article.title);
+          //        $("#article img").attr('src', article.img);
+          //        $("#article .text").html(article.content);
+          //        //$("#article header").html(article.date);
+          //        $("#main").hide();
+          //        setTimeout(function() { window.scrollTo(0, 1) }, 100);
+          //        $("#article").show().addClass("enter-right");
+          //        $('#scroller').css('-webkit-transform','translate3d(0px, 0px, 0px)');
+          //  }});
           //end get article
 
 
