@@ -31,25 +31,13 @@ var WebApp = {
         });
         //end building news list
         $(".loader").hide();
+        $("nav").hide();
 
         $("nav a").click(function() {
           if ($(this).attr('class') == 'back') {
-            $("#article").hide();
+            $("#article, nav").hide();
             $("#main").show().addClass("enter-left");
             return false;
-          }
-          else if ($(this).attr('class') == 'prev')
-          {
-            //will be
-          }
-          else if ($(this).attr('class') == 'next')
-          {
-            //will be
-          }
-          else
-          {
-            $("nav a").removeClass('current');
-            $(this).addClass('current');
           }
         });
 
@@ -94,8 +82,10 @@ var WebApp = {
   }
 }
 
-window.onload = WebApp.start();
-
+$(document).ready(function() {
+    WebApp.start();
+    loaded();
+});
 
 function setHeight() {
 	var headerH = document.getElementById('header').offsetHeight,
@@ -105,19 +95,27 @@ function setHeight() {
 }
 
 function loaded() {
-  
+
   var ua = navigator.userAgent.toLowerCase();
   var isAndroid = ua.indexOf("android") > -1;
+  var isiPhone = ua.indexOf("iphone") > -1;
   if(isAndroid) {
-  //  alert('this is android');
+    //android part
+    alert('this is android');
     $('body').addClass('android');
-  } else {
+  } else if (isiPhone) {
+    //iPhone part here we will load iScroll and start it !!!NOT TESTED need to test on iPhone!!!!
+    alert('this is iPhone');
+    
     setHeight();
-    document.addEventListener('touchmove', function(e){ e.preventDefault(); });
-    myScroll = new iScroll('scroller', {desktopCompatibility:true});
+    // Check screen size on orientation change
+    window.addEventListener('onorientationchange' in window ? 'orientationchange' : 'resize', setHeight, false);
+    //document.addEventListener('DOMContentLoaded', loaded);
+    
+    $('body').addClass('iphone');
+    $.getScript('iscroll.js', function(){
+		document.addEventListener('touchmove', function(e){ e.preventDefault(); });
+        myScroll = new iScroll('scroller', {desktopCompatibility:true});
+	});
   }
 }
-
-// Check screen size on orientation change
-//window.addEventListener('onorientationchange' in window ? 'orientationchange' : 'resize', setHeight, false);
-document.addEventListener('DOMContentLoaded', loaded);
