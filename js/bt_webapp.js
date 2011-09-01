@@ -17,7 +17,7 @@ var WebApp = {
         article.img = $(xml).find('enclosure').attr('url');
         article.title = $(xml).find('item').find('title');
         article.title = $(article.title[0]).text();
-        content += '<h1>'+ article.title +'</h1>';
+        content = '<h1>'+ article.title +'</h1>';
         content += '<img src="'+ article.img +'" alt="" >';
         content += '<div class="text">'+ article.content +'</div>';
       }});
