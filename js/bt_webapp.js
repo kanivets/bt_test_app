@@ -115,7 +115,7 @@ function loaded() {
     $('body').addClass('iphone');
     $.getScript('iscroll.js', function(){
 		document.addEventListener('touchmove', function(e){ e.preventDefault(); });
-        myScroll = new iScroll('scroller', {desktopCompatibility:true});
+    myScroll = new iScroll('scroller', {desktopCompatibility:true});
 	});
   }
 }
