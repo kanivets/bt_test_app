@@ -46,7 +46,8 @@ var WebApp = {
         $("#main article a").click(function() {
           //get article
           var id = $(this).attr('rel');
-          $('#footer .back').show();
+          
+          $('#footer').show();
           var bt_article_xml_url = 'http://test.ukrview.net/test_node.php?id=' + id;
           $.ajax({
             type: "GET",
@@ -67,8 +68,8 @@ var WebApp = {
                   $("#main").hide();
                   setTimeout(function() { window.scrollTo(0, 1) }, 100);
                   $("#article").show().addClass("enter-right");
-                  $('nav').show().css('top', deviceHeight - 74);
-          	}});
+                  $('#scroller').css('-webkit-transform','translate3d(0px, 0px, 0px)');
+            }});
           //end get article
 
 
@@ -104,8 +105,9 @@ function loaded() {
     alert('this is android');
     $('body').addClass('android');
   } else if (isiPhone) {
+  //} else {
     //iPhone part here we will load iScroll and start it !!!NOT TESTED need to test on iPhone!!!!
-    alert('this is iPhone');
+    //alert('this is iPhone');
     
     setHeight();
     // Check screen size on orientation change
@@ -113,9 +115,10 @@ function loaded() {
     //document.addEventListener('DOMContentLoaded', loaded);
     
     $('body').addClass('iphone');
-    $.getScript('iscroll.js', function(){
-		document.addEventListener('touchmove', function(e){ e.preventDefault(); });
-    myScroll = new iScroll('scroller', {desktopCompatibility:true});
-	});
+    $.getScript('js/iscroll.js', function(){
+      alert('iscroll');
+      document.addEventListener('touchmove', function(e){ e.preventDefault(); });
+      myScroll = new iScroll('scroller', {desktopCompatibility:true});
+    });
   }
 }
