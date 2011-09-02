@@ -1,7 +1,7 @@
 var WebApp = {
 
   contentStorage: {},
-  
+
   storeArticle: function(id) {
     var articleHTML = '';
     var bt_article_xml_url = 'http://test.ukrview.net/test_node.php?id=' + id;
@@ -23,10 +23,10 @@ var WebApp = {
         WebApp.contentStorage[id] = articleHTML;
       }});
   },
-  
+
   start: function() {
     setTimeout(function() { window.scrollTo(0, 1) }, 100);
-    
+
     //get bt latest news xml
     $.ajax({
       type: "GET",
@@ -43,7 +43,7 @@ var WebApp = {
           if (article.img) {
             var last_article_block = "<li>";
             last_article_block += "<article>";
-            last_article_block += "<a href='#article_" + article.id + "' rel='" + article.id + "' ontouchstart='$(this).addClass(\"active\");' ontouchend='$(this).removeClass(\"active\");'>";
+            last_article_block += "<a href='#article_" + article.id + "' rel='" + article.id + "' ontouchstart='$(this).addClass(\"active\");' ontouchend='$(this).removeClass(\"active\");' ontouchmove='$(this).removeClass(\"active\");'>";
             last_article_block += "<img src='" + article.img + "' alt=''/>";
             last_article_block += article.title;
             last_article_block += "<span>" + article.date + "</span>";
@@ -67,24 +67,24 @@ var WebApp = {
         });
 
         $('#main section ul').show();
-        
+
         $("#main article a").click(function() {
-          
+
           //get article
           var id = $(this).attr('rel');
-          
+
           // =========================
           // load stored article
           // =========================
-          $('#article').html(WebApp.contentStorage[id]);
+          $('#article section article').html(WebApp.contentStorage[id]);
           $("#main").hide();
           setTimeout(function() { window.scrollTo(0, 1) }, 100);
           $("#article").show().addClass("enter-right");
-          $('#scroller').css('-webkit-transform','translate3d(0px, 0px, 0px)');
-          
+          $('.iphone #scroller').css('-webkit-transform','translate3d(0px, 0px, 0px)');
+
           $('#footer').show();
-          
-          
+
+
           // =========================
           // load article from url
           // =========================
@@ -142,18 +142,18 @@ function loaded() {
   var isiPhone = ua.indexOf("iphone") > -1;
   if(isAndroid) {
     //android part
-    alert('this is android');
+    //alert('this is android');
     $('body').addClass('android');
   } else if (isiPhone) {
   //} else {
     //iPhone part here we will load iScroll and start it !!!NOT TESTED need to test on iPhone!!!!
     //alert('this is iPhone');
-    
+
     setHeight();
     // Check screen size on orientation change
     window.addEventListener('onorientationchange' in window ? 'orientationchange' : 'resize', setHeight, false);
     //document.addEventListener('DOMContentLoaded', loaded);
-    
+
     $('body').addClass('iphone');
     $.getScript('js/iscroll.js', function(){
       document.addEventListener('touchmove', function(e){ e.preventDefault(); });

@@ -2,15 +2,15 @@
 html{color:#000;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}li{list-style:none;}caption,th{text-align:left;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}q:before,q:after{content:'';}abbr,acronym{border:0;font-variant:normal;}sup{vertical-align:text-top;}sub{vertical-align:text-bottom;}input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit; color: #656565;}input,textarea,select{*font-size:100%;}legend{color:#000;}del,ins{text-decoration:none;}
 
 * {
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* "turn off" link highlight */	
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* "turn off" link highlight */
 }
 
-body { 
+body {
   -webkit-user-select:none;
   -webkit-touch-callout:none;
-  color:#595959; 
-  font-family:Arial, Helvetica, sans-serif; 
-  background: #151515;  
+  color:#595959;
+  font-family:Arial, Helvetica, sans-serif;
+  background: #151515;
 }
 
 
@@ -60,7 +60,7 @@ nav {
   width: 100%;
   position: fixed;
   bottom: -1px;
-  z-index: 10;  
+  z-index: 10;
   overflow: hidden;
 }
 
@@ -120,7 +120,7 @@ nav ul li a.current {
 }
 
 #main section {
-  padding: 40px 10px;
+  padding: 30px 10px 40px 10px;
 }
 
 #main section ul {
