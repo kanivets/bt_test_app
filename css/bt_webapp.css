@@ -119,8 +119,9 @@ nav ul li a.current {
   color: #fff;
 }
 
-#main section {
-  padding: 30px 10px 40px 10px;
+#main section,
+#article section {
+  padding: 0 10px;
 }
 
 #main section ul {
@@ -169,7 +170,6 @@ nav ul li a.current {
 
 #article section article {
   color: #FFFFFF;
-  padding: 40px 10px;
 }
 
 #article section article img {
@@ -184,14 +184,14 @@ nav ul li a.current {
   margin-bottom: 5px;
 }
 
+#wrapper {
+  padding: 40px 0;
+}
+
 .android #header {
   position: fixed;
   top: 0px;
   z-index: 2;
-}
-
-.android #wrapper {
-  margin-top: 30px;
 }
 
 .android #footer {
