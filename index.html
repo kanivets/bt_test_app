@@ -40,12 +40,31 @@
          </article>
       </section>
     </div>
+    <div id="auth">
+      <section>
+         <form target=hiddenIFrame action="http://login.berlingskemedia.net/sso/server/login" accept-charset="UTF-8" method="post" id="user-login" class="ctools-use-modal-processed">
+           <label for="edit-name">E-mail: <span class="form-required" title="Dette felt er obligatorisk.">*</span></label>
+           <input type="text" maxlength="60" name="name" id="edit-name" size="60" value="" class="form-text required" />
+           <label for="edit-pass">Adgangskode: <span class="form-required" title="Dette felt er obligatorisk.">*</span></label>
+           <input type="password" name="pass" id="edit-pass" maxlength="128" size="60" class="form-text required" />
+           <input type="hidden" name="form_id" id="edit-user-login" value="user_login" />
+           <input type="hidden" name="short_site_name" id="edit-short-site-name" value="bt" />
+           <input type="hidden" name="return_to" id="edit-return-to" value="http://www.bt.dk/sso/client/login?destination=www.bt.dk%2Fprofile"/>
+           <input type="hidden" name="assoc_handle" id="edit-assoc-handle" value="2011-09-06T20:00:04ZHBQM"  />
+           <input type="submit" name="op" id="edit-submit" value="Log ind"  class="form-submit"/>
+         </form>
+         <iframe src='http://mrouting.bt.dk/__UNWIRE_INTERNAL/redirect?redirect_url=http%3A%2F%2Fbt.dk%2Fsites%2Fall%2Fthemes%2Fbt2010%2Fimages%2Fplus%2Fplus-article-image-corner-logo.png&config_id=bt.dk&routing_type=ONE_TIME_DISABLING' style="display: none;"></iframe>
+         <iframe name="hiddenIFrame" id='myId' width="1" height="1" style='display:none;'></iframe>
+         <div class='auth_profile'>your profile</div>
+      </section>
+    </div>
   </div>
   </div>
 
   <nav id="footer">
     <ul>
       <li><a href="#main" class="back" ontouchstart="$(this).addClass('active');" ontouchend="$(this).removeClass('active');">Back</a></li>
+      <li><a href="#auth" class="auth" ontouchstart="$(this).addClass('active');" ontouchend="$(this).removeClass('active');">log in</a></li>
     </ul>
   </nav>
 

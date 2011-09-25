@@ -4,7 +4,11 @@ var WebApp = {
 
   storeArticle: function(id) {
     var articleHTML = '';
-    var bt_article_xml_url = 'http://test.ukrview.net/test_node.php?id=' + id;
+    //proxy variant
+    //var bt_article_xml_url = 'http://test.ukrview.net/test_node.php?id=' + id;
+    
+    //no proxy with phoegap
+    var bt_article_xml_url = 'http://www.bt.dk/mecommobile/node/' + id + '?output_type=xml';
     $.ajax({
       type: "GET",
     	url: bt_article_xml_url,
@@ -60,8 +64,14 @@ var WebApp = {
 
         $("nav a").click(function() {
           if ($(this).attr('class') == 'back') {
-            $("#article, nav").hide();
+            $("#article, nav, #auth").hide();
             $("#main").show().addClass("enter-left");
+            return false;
+          }
+
+          if ($(this).attr('class') == 'auth') {
+            $("#article").hide();
+            $("#auth").show().addClass("enter-left");
             return false;
           }
         });
@@ -118,14 +128,25 @@ var WebApp = {
   	}
   });
   //end get bt latest news xml
-	$("#article").hide();
+	$("#article, #auth").hide();
 
+  },
+
+  auth_start: function() {
+    $('iframe#myId').load(function() {
+        alert('auth processed!');
+        $('.auth_profile').load('http://www.bt.dk/profile #my-profile', function() {
+          var clean_profile = $('.auth_profile .plus-profile').html();
+          $('.auth_profile').html(clean_profile);
+        });
+    });
   }
 }
 
 $(document).ready(function() {
     WebApp.start();
     loaded();
+    WebApp.auth_start();
 });
 
 function setHeight() {
