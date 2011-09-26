@@ -4,11 +4,13 @@ var WebApp = {
 
   storeArticle: function(id) {
     var articleHTML = '';
+
     //proxy variant
-    //var bt_article_xml_url = 'http://test.ukrview.net/test_node.php?id=' + id;
-    
+    var bt_article_xml_url = 'http://test.ukrview.net/test_node.php?id=' + id;    
+
     //no proxy with phoegap
-    var bt_article_xml_url = 'http://www.bt.dk/mecommobile/node/' + id + '?output_type=xml';
+    //var bt_article_xml_url = 'http://www.bt.dk/mecommobile/node/' + id + '?output_type=xml';
+
     $.ajax({
       type: "GET",
     	url: bt_article_xml_url,
