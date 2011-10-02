@@ -204,7 +204,8 @@ nav ul li a.current {
   font-weight: 700;
 }
 
-#auth form input {
+#auth form input[type=text],
+#auth form input[type=password] {
   color: #0D0D0D;
   border: none;
   border-radius: 3px;
@@ -212,6 +213,15 @@ nav ul li a.current {
   clear: both;
   display: block;
   margin: 5px 5px 15px 5px;
+  width: 250px;
+}
+
+#auth form input[type=submit] {
+  padding: 5px;
+  clear: both;
+  display: block;
+  margin: 5px 5px 15px 5px;
+  width: 260px;
 }
 
 #auth .auth_profile {
