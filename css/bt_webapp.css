@@ -188,6 +188,51 @@ nav ul li a.current {
   padding: 40px 0;
 }
 
+#auth form {
+  background: #333333;
+  border-radius: 3px;
+  box-shadow: 0 0 3px #000000;
+  margin: 10px;
+  padding: 10px;
+  color: #FFFFFF;
+}
+
+#auth form label {
+  clear: both;
+  margin: 5px;
+  display: block;
+  font-weight: 700;
+}
+
+#auth form input {
+  color: #0D0D0D;
+  border: none;
+  border-radius: 3px;
+  padding: 5px;
+  clear: both;
+  display: block;
+  margin: 5px 5px 15px 5px;
+}
+
+#auth .auth_profile {
+  background: -webkit-gradient(
+   linear,
+   left top,
+   left bottom,
+   color-stop(0, #DBDBDB),
+   color-stop(1, #B4B4B4)
+  );
+  color: #0D0D0D;
+  border-radius: 3px;
+  box-shadow: 0 0 3px #000000;
+  margin: 10px;
+  padding: 10px;  
+}
+
+#auth .auth_profile label {
+  font-weight: 700;
+}
+
 .android #header {
   position: fixed;
   top: 0px;

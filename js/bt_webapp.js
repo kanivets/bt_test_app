@@ -135,8 +135,9 @@ var WebApp = {
   },
 
   auth_start: function() {
+    $('.auth_profile').html('Authentification processing, please wait...');
     $('iframe#myId').load(function() {
-        alert('auth processed!');
+        $('.auth_profile').html('Authentification processed!');
         $('.auth_profile').load('http://www.bt.dk/profile #my-profile', function() {
           var clean_profile = $('.auth_profile .plus-profile').html();
           $('.auth_profile').html(clean_profile);
