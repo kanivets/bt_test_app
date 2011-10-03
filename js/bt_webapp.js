@@ -90,11 +90,12 @@ var WebApp = {
           // =========================
           $('#article section article').html(WebApp.contentStorage[id]);
           $("#main").hide();
-          setTimeout(function() { window.scrollTo(0, 1) }, 100);
+          //setTimeout(function() { window.scrollTo(0, 1) }, 100);
           $("#article").show().addClass("enter-right");
-          $('.iphone #scroller').css('-webkit-transform','translate3d(0px, 0px, 0px)');
+          //$('.iphone #scroller').css('-webkit-transform','translate3d(0px, 0px, 0px)');
 
           $('#footer').show();
+          alert("footer just shown!")
 
 
           // =========================
@@ -152,10 +153,11 @@ $(document).ready(function() {
 });
 
 function setHeight() {
-	var headerH = document.getElementById('header').offsetHeight,
-		footerH = document.getElementById('footer').offsetHeight,
-		wrapperH = window.innerHeight - headerH - footerH;
+	var headerH = document.getElementById('header').offsetHeight;
+	var	footerH = document.getElementById('footer').offsetHeight;
+	var	wrapperH = window.innerHeight - headerH - footerH;
 	document.getElementById('wrapper').style.height = wrapperH + 'px';
+  alert(wrapperH);
 }
 
 function loaded() {
