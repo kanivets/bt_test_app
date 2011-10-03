@@ -39,6 +39,8 @@ var WebApp = {
       url: bt_latest_news_xml_url,
       dataType: "xml",
       success: function(xml) {
+        //removing of related articles
+        $(xml).find('related').remove();
         //building news list
         $(xml).find('item').each(function(){
           var article = {};
@@ -136,8 +138,9 @@ var WebApp = {
   },
 
   auth_start: function() {
+    $('.auth_profile').html('Not authentificated.');
     $('iframe#myId').load(function() {
-        alert('auth processed!');
+        $('.auth_profile').html('Authentification processed!');
         $('.auth_profile').load('http://www.bt.dk/profile #my-profile', function() {
           var clean_profile = $('.auth_profile .plus-profile').html();
           $('.auth_profile').html(clean_profile);
