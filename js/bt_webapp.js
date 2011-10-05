@@ -97,8 +97,7 @@ var WebApp = {
           //$('.iphone #scroller').css('-webkit-transform','translate3d(0px, 0px, 0px)');
 
           $('#footer').show();
-          alert("footer just shown!")
-
+          
 
           // =========================
           // load article from url
@@ -160,7 +159,6 @@ function setHeight() {
 	var	footerH = document.getElementById('footer').offsetHeight;
 	var	wrapperH = window.innerHeight - headerH - footerH;
 	document.getElementById('wrapper').style.height = wrapperH + 'px';
-  alert(wrapperH);
 }
 
 function loaded() {
