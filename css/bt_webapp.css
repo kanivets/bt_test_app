@@ -119,6 +119,7 @@ nav ul li a.current {
 
 #article .text {
   color: #fff;
+  padding-bottom: 60px;
 }
 
 #main section,
@@ -224,6 +225,16 @@ nav ul li a.current {
   display: block;
   margin: 5px 5px 15px 5px;
   width: 260px;
+}
+
+#auth form input.active {
+  background: -webkit-gradient(
+   linear,
+   left top,
+   left bottom,
+   color-stop(0, #454547),
+   color-stop(1, #2F2F31)
+  );
 }
 
 #auth .auth_profile {

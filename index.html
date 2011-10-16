@@ -54,7 +54,7 @@
            <!--<input type="hidden" name="return_to" id="edit-return-to" value="http://www.bt.dk/sso/client/login?destination=www.bt.dk%2Fprofile"/>-->
            <input type="hidden" name="return_to" id="edit-return-to" value="http://www.bt.dk/sso/client/login?destination=www.bt.dk%2Fsites%2Fall%2Fthemes%2Fbt2010%2Fimages%2Fplus%2Fplus-article-image-corner-logo.png"/>           
            <input type="hidden" name="assoc_handle" id="edit-assoc-handle" value="2011-09-06T20:00:04ZHBQM"  />
-           <input type="submit" name="op" id="edit-submit" value="Log ind" class="form-submit"/>
+           <input type="submit" name="op" id="edit-submit" value="Log ind" class="form-submit" ontouchstart="$(this).addClass('active');" ontouchend="$(this).removeClass('active');"/>
          </form>
          <iframe src='http://mrouting.bt.dk/__UNWIRE_INTERNAL/redirect?redirect_url=http%3A%2F%2Fbt.dk%2Fsites%2Fall%2Fthemes%2Fbt2010%2Fimages%2Fplus%2Fplus-article-image-corner-logo.png&config_id=bt.dk&routing_type=ONE_TIME_DISABLING' style="display: none;"></iframe>
          <iframe name="hiddenIFrame" id='myId' width="1" height="1" style='display:none;'></iframe>

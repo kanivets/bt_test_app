@@ -138,6 +138,10 @@ var WebApp = {
 
   auth_start: function() {
     $('.auth_profile').html('Not authentificated.');
+    $('#edit-submit').click(function() {
+        $('.auth_profile').html('Processing, please wait...');
+        $('#auth #user-login').submit();
+    })
     $('iframe#myId').load(function() {
         $('.auth_profile').html('Authentification processed!');
         $('.auth_profile').load('http://www.bt.dk/profile #my-profile', function() {
